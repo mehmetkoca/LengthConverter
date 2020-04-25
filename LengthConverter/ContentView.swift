@@ -38,7 +38,7 @@ struct ContentView: View {
                 }
                 
                 Section(header: Text("Result")) {
-                    Text("\(destinationLengthResultValue, specifier: "%.0f") \(destinationLengthSymbol)")
+                    Text("\(destinationLengthResultValue, specifier: "%.2f") \(destinationLengthSymbol)")
                 }
                 
             }
