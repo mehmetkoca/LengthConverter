@@ -10,8 +10,8 @@ import Foundation
 
 enum Length: String, CaseIterable {
     
-    case meter = "Meter"
-    case kilometer = "Kilometer"
+    case meter = "Meters"
+    case kilometer = "Kilometers"
     case feet = "Feet"
     case miles = "Miles"
     
