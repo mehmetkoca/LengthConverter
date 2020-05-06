@@ -41,6 +41,12 @@ struct ContentView: View {
                     Text("\(destinationLengthResultValue, specifier: "%.2f") \(destinationLengthSymbol)")
                 }
             }
+            .gesture(DragGesture().onChanged{_ in
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                to: nil,
+                                                from: nil,
+                                                for: nil)
+            })
             .navigationBarTitle("Length Converter")
         }
     }
@@ -51,32 +57,32 @@ struct ContentView: View {
 private extension ContentView {
     
     var mainLength: Length {
-        return lengths[mainLengthIndex]
+        lengths[mainLengthIndex]
     }
     
     var mainLengthSymbol: String {
-        return mainLength.lengthSymbol
+        mainLength.lengthSymbol
     }
     
     var mainLengthNumericValue: Double {
-        return Double(mainLengthValue) ?? 0.0
+        Double(mainLengthValue) ?? 0.0
     }
 
     var mainLengthResultValue: String {
-        return "\(mainLengthNumericValue) \(mainLength.lengthSymbol)"
+        "\(mainLengthNumericValue) \(mainLength.lengthSymbol)"
     }
     
     var destinationLengthResultValue: Double {
-        let result = mainLength.convert(to: destinationLength, value: mainLengthNumericValue)
-        return result
+        mainLength.convert(to: destinationLength, value: mainLengthNumericValue)
+        
     }
 
     var destinationLength: Length {
-        return lengths[destinationLengthIndex]
+        lengths[destinationLengthIndex]
     }
     
     var destinationLengthSymbol: String {
-        return lengths[destinationLengthIndex].lengthSymbol
+        lengths[destinationLengthIndex].lengthSymbol
     }
 }
 
